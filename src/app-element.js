@@ -1,10 +1,25 @@
 import { LitElement, html } from 'lit-element';
 
+import './header-element';
+import './todo-input';
+
 class AppElement extends LitElement {
   render() {
     return html`
-      <p>App works!!</p>
+      <div id="app">
+        <header-element></header-element>
+        <div class="main-content">
+          <todo-input
+            .onSubmit=${this.onTodoSubmit}
+          >
+          </todo-input>
+        </div>
+      </div>
     `;
+  }
+
+  onTodoSubmit(todoText) {
+    console.log(todoText);
   }
 }
 
