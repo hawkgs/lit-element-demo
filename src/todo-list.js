@@ -4,7 +4,9 @@ import { repeat } from 'lit-html/directives/repeat';
 class TodoList extends LitElement {
   static get styles() {
     return css`
-      li { cursor: pointer; }
+      .todo {
+        display: flex;
+      }
     `;
   }
 
@@ -31,17 +33,17 @@ class TodoList extends LitElement {
 
   render() {
     return html`
-      <ul>
+      <div class="todo-list">
         ${repeat(this.sortedTodos, (t) => t.id, (t) =>
           html`
-            <li
-              @click=${() => this.onToggleStarring(t.id)}
-            >
-              ${t.text} ${t.starred ? '[starred]' : ''}
-            </li>
+            <div class="todo">
+              <span>${t.starred ? '⭐ ' : ''}${t.text}</span>
+              <a href="javascript:void(0);" @click=${() => this.onToggleStarring(t.id)}>[star]</a>
+              <a href="javascript:void(0);" @click=${() => this.onDelete(t.id)}>[delete]</a>
+            </div>
           `
         )}
-      </ul>
+      </div>
     `;
   }
 }

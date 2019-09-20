@@ -37,7 +37,8 @@ class AppElement extends LitElement {
           </todo-input>
           <todo-list
             .todos=${this.todos}
-            .onToggleStarring=${this.onToggleStarring}
+            .onToggleStarring=${this.onToggleStarring.bind(this)}
+            .onDelete=${this.onDelete.bind(this)}
           >
           </todo-list>
         </div>
@@ -63,6 +64,10 @@ class AppElement extends LitElement {
       }
       return t;
     });
+  }
+
+  onDelete(id) {
+    this.todos = this.todos.filter((t) => t.id !== id);
   }
 }
 
