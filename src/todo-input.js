@@ -43,7 +43,13 @@ class TodoInput extends LitElement {
 
   createTodo(e) {
     e.preventDefault();
-    this.onSubmit(this.todoInput.value);
+
+    const { value } = this.todoInput;
+    if (!value || value.length === 0) {
+      return;
+    }
+
+    this.onSubmit(value);
     this.todoInput.value = '';
   }
 }
