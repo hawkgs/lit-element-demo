@@ -1,11 +1,44 @@
 import { LitElement, html, css } from 'lit-element';
 import { repeat } from 'lit-html/directives/repeat';
+import { classMap } from 'lit-html/directives/class-map';
 
 class TodoList extends LitElement {
   static get styles() {
     return css`
-      .todo {
+      .todo-list-item {
+        border-top: 1px solid #eee;
+        padding: 15px 20px;
+        box-sizing: border-box;
+        cursor: pointer;
         display: flex;
+        align-items: center;
+      }
+
+      .todo-list-item:hover {
+        background-color: rgb(245, 245, 245);
+      }
+
+      .text {
+        margin: 0;
+        flex: 1;
+      }
+
+      .text.starred {
+        color: goldenrod;
+      }
+
+      .actions {
+        font-size: 14px;
+        color: #999;
+        cursor: pointer;
+      }
+
+      .actions > span {
+        margin-left: 10px;
+      }
+
+      .actions > span:hover {
+        text-decoration: underline;
       }
     `;
   }
@@ -36,10 +69,16 @@ class TodoList extends LitElement {
       <div class="todo-list">
         ${repeat(this.sortedTodos, (t) => t.id, (t) =>
           html`
-            <div class="todo">
-              <span>${t.starred ? '⭐ ' : ''}${t.text}</span>
-              <a href="javascript:void(0);" @click=${() => this.onToggleStarring(t.id)}>[star]</a>
-              <a href="javascript:void(0);" @click=${() => this.onDelete(t.id)}>[delete]</a>
+            <div class="todo-list-item">
+              <p class=${classMap({'text': true, starred: t.starred })}>
+                <span>${ t.starred ? '⭐ ' : '' }${t.text}</span>
+              </p>
+              <div class="actions">
+                <span @click=${() => this.onToggleStarring(t.id)}>
+                  ${ t.starred ? 'Unstar' : 'Star' }
+                </span>
+                <span @click=${() => this.onDelete(t.id)}>Done</span>
+              </div>
             </div>
           `
         )}

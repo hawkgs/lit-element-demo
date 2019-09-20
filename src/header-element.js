@@ -7,10 +7,13 @@ class HeaderElement extends LitElement {
         color: red;
         width: 100%;
         background: #fff;
+        text-align: center;
+        padding: 10px;
       }
 
       .content {
-        color: red;
+        font-size: 20px;
+        color: #ccc;
       }
     `;
   }

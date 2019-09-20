@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit-element';
+import { LitElement, html, css } from 'lit-element';
 
 import './header-element';
 import './todo-input';
@@ -18,6 +18,17 @@ class AppElement extends LitElement {
   constructor() {
     super();
     this.todos = [...INIT_TODOS];
+  }
+
+  static get styles() {
+    return css`
+      .main-content {
+        width: 600px;
+        margin: 50px auto 0 auto;
+        background: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+    `;
   }
 
   static get properties() {
