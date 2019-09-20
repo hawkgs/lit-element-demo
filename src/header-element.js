@@ -9,9 +9,6 @@ class HeaderElement extends LitElement {
         background: #fff;
         text-align: center;
         padding: 10px;
-      }
-
-      .content {
         font-size: 20px;
         color: #ccc;
       }
@@ -21,9 +18,7 @@ class HeaderElement extends LitElement {
   render() {
     return html`
       <header class="header">
-        <div class="content">
-          lit-html-demo
-        </div>
+        lit-html-demo
       </header>
     `;
   }
