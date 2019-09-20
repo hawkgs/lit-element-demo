@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit-element';
+import { LitElement, html,css } from 'lit-element';
 
 class TodoInput extends LitElement {
   static get properties() {
@@ -11,7 +11,7 @@ class TodoInput extends LitElement {
     return html`
       <div class="todo-input">
         <form @submit=${this.createTodo}>
-          <input id="todo-input" type="text" />
+          <input id="todo-input" autocomplete="off" type="text" />
         </form>
       </div>
     `;
@@ -24,6 +24,7 @@ class TodoInput extends LitElement {
   createTodo(e) {
     e.preventDefault();
     this.onSubmit(this.todoInput.value);
+    this.todoInput.value = '';
   }
 }
 
