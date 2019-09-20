@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>lit-element-demo</title>
+    <meta charset="UTF-8">
+    <!-- Load polyfills -->
+    <script
+      src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"
+      defer>
+    </script>
+    <!-- Load components via WebComponents.waitFor -->
+    <script type="module">
+      window.WebComponents = window.WebComponents || {
+        waitFor(cb){ addEventListener('WebComponentsReady', cb) }
+      }
+      WebComponents.waitFor(async () => {
+        import('./src/app-element.js');
+      });
+    </script>
+  </head>
+  <body>
+    <app-element></app-element>
+  </body>
+</html>

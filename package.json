@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/hawkgs/lit-element-demo#readme",
   "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.3.0",
     "lit-element": "^2.2.1"
   }
 }
