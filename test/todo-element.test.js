@@ -10,7 +10,7 @@ describe('todo-element', () => {
     el = await fixture('<todo-element></todo-element>');
     el.todos = [
       { id: 0, text: 'Groceries', starred: false },
-      { id: 1, text: 'Change light bulb' }
+      { id: 1, text: 'Change light bulb', starred: true }
     ];
   });
 
@@ -71,6 +71,16 @@ describe('todo-element', () => {
     await elementUpdated(el);
 
     expect(lastTodo.childNodes[1].classList.contains('starred')).to.be.true;
+  });
+
+  it('should unstar a todo', async () => {
+    const listElem = el.shadowRoot.querySelector('todo-list');
+    const firstTodo = listElem.shadowRoot.querySelector('.todo-list-item:first-child');
+    firstTodo.childNodes[3].childNodes[1].click();
+
+    await elementUpdated(el);
+
+    expect(firstTodo.childNodes[1].classList.contains('starred')).to.be.false;
   });
 
   it('should put starred todos on top', async () => {
