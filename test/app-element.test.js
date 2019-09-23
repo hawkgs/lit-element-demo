@@ -1,6 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 
-import '../src/app-element';
+import '../src/ui/app-element';
 
 describe('app-element', () => {
   it('should contain header and todo element', async () => {

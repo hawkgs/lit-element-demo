@@ -1,6 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 
-import '../src/header-element/header-element';
+import '../src/ui/header-element/header-element';
 
 describe('header-element', () => {
   it('should contain title', async () => {

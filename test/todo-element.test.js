@@ -1,7 +1,7 @@
 import { fixture, expect, elementUpdated } from '@open-wc/testing';
 
-import '../src/todo-element/todo-element';
-import '../src/todo-element/todo-list';
+import '../src/ui/todo-element/todo-element';
+import '../src/ui/todo-element/todo-list';
 
 describe('todo-element', () => {
   let el;
