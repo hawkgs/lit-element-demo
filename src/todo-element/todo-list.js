@@ -69,7 +69,7 @@ class TodoList extends LitElement {
       <div class="todo-list">
         ${repeat(this.sortedTodos, (t) => t.id, (t) =>
           html`
-            <div class="todo-list-item">
+            <div class="todo-list-item" data-id=${t.id}>
               <p class=${classMap({'text': true, starred: t.starred })}>
                 <span>${ t.starred ? '⭐ ' : '' }${t.text}</span>
               </p>
