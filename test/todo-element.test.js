@@ -43,7 +43,9 @@ describe('todo-element', () => {
   it('should delete a todo', async () => {
     const expectedTodosNum = el.todos.length - 1;
     const listElem = el.shadowRoot.querySelector('todo-list');
-    listElem.onDelete(0);
+
+    const firstTodo = listElem.shadowRoot.querySelector('.todo-list-item:first-child');
+    firstTodo.childNodes[3].childNodes[3].click();
 
     expect(el.todos.length).to.equal(expectedTodosNum);
 
@@ -56,17 +58,19 @@ describe('todo-element', () => {
   it('should star a todo', async () => {
     const newTodoText = 'Send mail';
     el.onTodoSubmit(newTodoText);
-    const todo = el.todos.find((t) => t.text === newTodoText);
-
-    const listElem = el.shadowRoot.querySelector('todo-list');
-    listElem.onToggleStarring(todo.id);
-
-    expect(todo.starred).to.be.true;
 
     await elementUpdated(el);
 
-    const todoElem = listElem.shadowRoot.querySelector(`.todo-list-item[data-id="${todo.id}"]`);
-    expect(todoElem.childNodes[1].classList.contains('starred')).to.be.true;
+    const listElem = el.shadowRoot.querySelector('todo-list');
+    const lastTodo = listElem.shadowRoot.querySelector('.todo-list-item:last-child');
+    lastTodo.childNodes[3].childNodes[1].click();
+
+    const isStarred = !!el.todos.find((t) => t.text === newTodoText && t.starred);
+    expect(isStarred).to.be.true;
+
+    await elementUpdated(el);
+
+    expect(lastTodo.childNodes[1].classList.contains('starred')).to.be.true;
   });
 
   it('should put starred todos on top', async () => {
