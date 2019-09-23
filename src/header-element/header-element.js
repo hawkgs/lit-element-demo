@@ -3,7 +3,7 @@ import { LitElement, html, css } from 'lit-element';
 class HeaderElement extends LitElement {
   static get styles() {
     return css`
-      .header {
+      #header {
         color: red;
         width: 100%;
         background: #fff;
@@ -17,7 +17,7 @@ class HeaderElement extends LitElement {
 
   render() {
     return html`
-      <header class="header">
+      <header id="header">
         lit-html-demo
       </header>
     `;
