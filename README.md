@@ -1,2 +1,3 @@
 # lit-element-demo
-lit-element demo application
+
+📃 Simple to-do test application developed with lit-element
