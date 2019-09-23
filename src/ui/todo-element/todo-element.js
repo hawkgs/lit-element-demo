@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit-element';
+import { StorageMixin } from '../../storage/storage-mixin';
 
 import './todo-input';
 import './todo-list';
@@ -13,7 +14,7 @@ const INIT_TODOS = [{
   starred: true
 }];
 
-class TodoElement extends LitElement {
+class TodoElement extends StorageMixin(LitElement) {
   static get styles() {
     return css`
       .todo-element {
@@ -33,7 +34,10 @@ class TodoElement extends LitElement {
 
   constructor() {
     super();
-    this.todos = [...INIT_TODOS];
+
+    this.storeProperties([
+      { name: 'todos', value: [...INIT_TODOS] }
+    ]);
   }
 
   render() {
